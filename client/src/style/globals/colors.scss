@@ -2,16 +2,19 @@ $black: #0a2e19;
 $white: #ecf0f1;
 $silver: #bdc3c7;
 $green: #27ae60;
+$red: #eb0400;
 
 .black{color:$black;}
 .white{color:$white;}
 .silver{color:$silver;}
 .green{color: $green;}
+.red{color: $red;}
 
 .bg-black{background-color: $black;}
 .bg-white{background-color: $white;}
 .bg-silver{background-color: $silver;}
 .bg-green{background-color: $green;}
+.bg-red{background-color: $red;}
 
 body {
     background-color: $silver;

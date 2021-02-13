@@ -1,4 +1,5 @@
 import bannerImage from '../images/tanner-van-dera-oaQ2mTeaP7o-unsplash.jpg'
+import ProductCarousel from '../components/ProductCarousel'
 import CTAbanner from '../components/CTAbanner'
 import USPs from '../components/USPs'
 
@@ -11,11 +12,7 @@ const HomePage = () => {
 				description='Bij PC4U helpen we u met het uitzoeken van geschikte appraratuur'
 			/>
 			<USPs />
-			<div className='container'>
-				<div className='row'>
-					<div className='col-12'></div>
-				</div>
-			</div>
+			<ProductCarousel />
 		</>
 	)
 }
