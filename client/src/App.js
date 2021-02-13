@@ -1,7 +1,17 @@
+import { Switch, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import Nav from './components/Nav'
+import './style/index.scss'
+
 const App = () => {
 	return (
 		<div className='App'>
-			<h1>Hello, world</h1>
+			<Nav />
+			<Switch>
+				<Route path='/' exact>
+					<HomePage />
+				</Route>
+			</Switch>
 		</div>
 	)
 }

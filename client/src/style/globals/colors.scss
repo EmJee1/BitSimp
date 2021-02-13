@@ -1,0 +1,18 @@
+$black: #0a2e19;
+$white: #ecf0f1;
+$silver: #bdc3c7;
+$green: #27ae60;
+
+.black{color:$black;}
+.white{color:$white;}
+.silver{color:$silver;}
+.green{color: $green;}
+
+.bg-black{background-color: $black;}
+.bg-white{background-color: $white;}
+.bg-silver{background-color: $silver;}
+.bg-green{background-color: $green;}
+
+body {
+    background-color: $silver;
+}

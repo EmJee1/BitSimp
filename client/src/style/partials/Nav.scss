@@ -1,0 +1,31 @@
+.main-nav {
+	.navbar-nav {
+		a {
+			color: $white;
+
+			&.active {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.navbar-toggler {
+		border: none;
+		outline: none;
+		box-shadow: none;
+	}
+
+	.navbar-toggler-icon {
+		background-image: url('../../images/navicon.svg');
+	}
+}
+
+@media (min-width: 992px) {
+	.main-nav .navbar-collapse {
+		justify-content: flex-end;
+
+		hr {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,18 @@
+.usps {
+    display: flex;
+    flex-direction: column;
+    display: block;
+
+    .usp-item {
+        display: block;
+        img {
+            display: inline-block;
+            width: 28px;
+            height: auto;
+        }
+
+        h5 {
+            display: inline-block;
+        }
+    }
+}

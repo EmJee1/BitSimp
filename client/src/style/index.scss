@@ -1,0 +1,12 @@
+// global imports
+@import './globals/colors.scss';
+@import './globals/typography.scss';
+@import './globals/buttons.scss';
+
+// partial imports
+@import './partials/Nav.scss';
+@import './partials/CTAbanner.scss';
+@import './partials/USPs.scss';
+
+// import third party libs
+@import './vendor/bootstrap.min.css';
