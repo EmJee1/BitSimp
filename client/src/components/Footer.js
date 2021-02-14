@@ -11,10 +11,10 @@ const Footer = () => {
 							Home
 						</Link>
 						<Link className='nav-link' to='/assortiment'>
-							Home
+							Assortiment
 						</Link>
 						<Link className='nav-link' to='/'>
-							Home
+							Contact
 						</Link>
 					</div>
 					<div className='col-6 font-sm'>

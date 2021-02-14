@@ -2,6 +2,7 @@
 @import './globals/colors.scss';
 @import './globals/typography.scss';
 @import './globals/buttons.scss';
+@import './globals/input.scss';
 
 // partial imports
 @import './partials/Nav.scss';
@@ -9,6 +10,7 @@
 @import './partials/USPs.scss';
 @import './partials/ProductCarousel.scss';
 @import './partials/Footer.scss';
+@import './partials/Assortment.scss';
 
 // import third party libs
 @import './vendor/bootstrap.min.css';
