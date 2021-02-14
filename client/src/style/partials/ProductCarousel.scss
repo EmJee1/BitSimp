@@ -2,7 +2,7 @@
 	padding-top: 50px;
 
 	h2 {
-        cursor: pointer;
+		cursor: pointer;
 		display: inline-block;
 		display: flex;
 		align-items: center;
@@ -17,36 +17,89 @@
 }
 
 .product-carousel-wrap {
-    margin-top: 1.6rem;
+	margin-top: 1.6rem;
 	display: flex;
 	gap: 2.6rem;
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
 	scroll-padding: 1rem;
+	overflow-y: hidden;
 }
 
 .product-carousel-item {
-    width: 215px;
-    cursor: pointer;
+	width: 215px;
+	height: 240px;
+	cursor: pointer;
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 	scroll-snap-align: start;
 	scroll-snap-stop: normal;
 	background-color: #fff;
 	font-size: 1.5rem;
-    padding: 25px;
-    border-radius: 6px;
+	padding: 25px;
+	border-radius: 6px;
 
-    img {
-        width: 160px;
-        height: auto;
-    }
+	.product-carousel-image {
+		width: 160px;
+		height: 120px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
 
-    h5 {
-        margin-top: .6rem;
-    }
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			position: relative;
+			display: block;
+		}
+	}
 
-    p {
-        margin-bottom: 0;
-    }
+	h5 {
+		margin-top: 1.2rem;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		width: 100%;
+		white-space: nowrap;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.product-carousel-controls-wrap {
+	position: relative;
+	display: block;
+}
+
+.product-carousel-controls {
+	display: none;
+	position: absolute;
+	list-style-type: none;
+	justify-content: space-between;
+	width: 100%;
+	top: 140px;
+	left: 0;
+	padding-left: 0;
+
+	li {
+		margin-left: -100px;
+		cursor: pointer;
+
+		&:last-of-type {
+			margin-right: -100px;
+		}
+	}
+
+	img {
+		height: 60px;
+		width: auto;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.product-carousel-controls {
+		display: flex;
+	}
 }
