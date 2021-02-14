@@ -2,7 +2,7 @@
     border: 2px solid $green;
     background-color: transparent;
     border-radius: 6px;
-    padding: .4rem 1rem .4rem .4rem;
+    padding: .3rem 1rem .3rem .4rem;
     color: $black;
     outline: none;
     position: relative;
@@ -11,15 +11,4 @@
     &::placeholder {
         color: $black;
     }
-}
-
-.search-input::after {
-    content: ' ';
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    height: .8rem;
-    width: .8rem;
-    background-image: url('../../images/search.svg');
 }
