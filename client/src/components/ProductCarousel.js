@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import rightPointingHand from '../images/hand-point-right-solid.svg'
-import laptopImage from '../images/laptop.png'
 import chevronRight from '../images/chevron-right-solid.svg'
 import chevronLeft from '../images/chevron-left-solid.svg'
 
-const ProductCarousel = () => {
+const ProductCarousel = ({title}) => {
 	const [products, setProducts] = useState([])
+	const carouselWrapRef = useRef(null)
 
 	useEffect(() => {
 		fetch('https://fakestoreapi.com/products')
@@ -14,23 +14,34 @@ const ProductCarousel = () => {
 			.then(json => setProducts(json))
 	})
 
+	const handleCarouselButton = scrollRight => {
+		let newLeftLocation = carouselWrapRef.current.scrollLeft
+		if (scrollRight) newLeftLocation += 180
+		else newLeftLocation -= 180
+
+		carouselWrapRef.current.scrollTo({
+			left: newLeftLocation,
+			behaviour: 'smooth',
+		})
+	}
+
 	return (
 		<div className='product-carousel container'>
 			<div className='product-carousel-controls-wrap'>
 				<ul className='product-carousel-controls'>
-					<li>
+					<li onClick={() => handleCarouselButton(false)}>
 						<img src={chevronLeft} alt='Chevron left icon' />
 					</li>
-					<li>
+					<li onClick={() => handleCarouselButton(true)}>
 						<img src={chevronRight} alt='Chevron right icon' />
 					</li>
 				</ul>
 			</div>
 			<h2 className='font-lg font-bold green'>
-				Bestsellers
+				{title}
 				<img src={rightPointingHand} alt='Right pointing hand icon' />
 			</h2>
-			<div className='product-carousel-wrap'>
+			<div className='product-carousel-wrap' ref={carouselWrapRef}>
 				{products.map((obj, index) => (
 					<div className='product-carousel-item' key={obj.id}>
 						<div className='product-carousel-image'>

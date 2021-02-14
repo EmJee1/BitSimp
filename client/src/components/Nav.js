@@ -21,7 +21,7 @@ const Nav = () => {
 						<Link className='nav-link active' to='/'>
 							Home
 						</Link>
-						<Link className='nav-link' to='/'>
+						<Link className='nav-link' to='/assortiment'>
 							Assortiment
 						</Link>
 						<Link className='nav-link' to='/'>

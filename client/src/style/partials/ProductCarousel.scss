@@ -1,5 +1,5 @@
 .product-carousel {
-	padding-top: 50px;
+	margin-top: 100px;
 
 	h2 {
 		cursor: pointer;
@@ -101,5 +101,14 @@
 @media only screen and (min-width: 992px) {
 	.product-carousel-controls {
 		display: flex;
+	}
+
+	.product-carousel-wrap {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
 }

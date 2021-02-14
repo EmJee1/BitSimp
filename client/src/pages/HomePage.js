@@ -9,10 +9,11 @@ const HomePage = () => {
 			<CTAbanner
 				backgroundImage={bannerImage}
 				title='Moeite met thuiswerken?'
-				description='Bij PC4U helpen we u met het uitzoeken van geschikte appraratuur'
+				description='Bij BitSimp helpen we u met het uitzoeken van geschikte appraratuur'
 			/>
 			<USPs />
-			<ProductCarousel />
+			<ProductCarousel title='Bestsellers' />
+			<ProductCarousel title='Newcomers' />
 		</>
 	)
 }

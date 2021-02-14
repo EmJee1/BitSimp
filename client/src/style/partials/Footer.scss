@@ -1,0 +1,27 @@
+.main-footer {
+    margin-top: 100px;
+
+    a {
+        color: $black;
+        padding-left: 0;
+
+        &:first-of-type {
+            padding-top: 0;
+        }
+    }
+
+    .active {
+        text-decoration: underline;
+    }
+
+    hr {
+        margin-bottom: 0;
+        opacity: 1;
+        border-width: 2px;
+        background-color: $green;
+    }
+}
+
+.inner-footer {
+    margin: 30px 0;
+}
