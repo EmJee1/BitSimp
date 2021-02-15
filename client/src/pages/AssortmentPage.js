@@ -9,6 +9,7 @@ const AssortmentPage = () => {
 				backgroundImage={bannerImage}
 				title='Advies op maat'
 				description='Heeft u toch nog vragen, breng dan gerust een bezoek aan onze winkel in Dedemsvaart'
+				showButton={false}
 			/>
 			<USPs />
 			<div className='products-page-wrap'>
@@ -18,6 +19,7 @@ const AssortmentPage = () => {
 							<div className='product-page-controls'>
 								<input
 									type='text'
+									id='product-search'
 									className='primary-input search-input'
 									placeholder='Zoek naar producten...'
 								/>

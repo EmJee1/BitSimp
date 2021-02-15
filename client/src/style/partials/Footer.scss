@@ -8,6 +8,10 @@
         &:first-of-type {
             padding-top: 0;
         }
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .active {

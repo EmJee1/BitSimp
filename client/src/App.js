@@ -1,12 +1,19 @@
 import { Switch, Route } from 'react-router-dom'
-import assortmentPage from './pages/AssortmentPage'
+import { useState } from 'react'
+
+import AssortmentPage from './pages/AssortmentPage'
+import CartButton from './components/CartButton'
+import RegisterPage from './pages/RegisterPage'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import Nav from './components/Nav'
+
 import './style/index.scss'
-import AssortmentPage from './pages/AssortmentPage'
 
 const App = () => {
+	const [cart, setCart] = useState([])
+	const [isLoggedIn, setIsLoggedIn] = useState(false)
+
 	return (
 		<>
 			<Nav />
@@ -17,7 +24,11 @@ const App = () => {
 				<Route path='/assortiment' exact>
 					<AssortmentPage />
 				</Route>
+				<Route path='/register' exact>
+					<RegisterPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+				</Route>
 			</Switch>
+			<CartButton cart={cart} />
 			<Footer />
 		</>
 	)

@@ -13,6 +13,9 @@ const Footer = () => {
 						<Link className='nav-link' to='/assortiment'>
 							Assortiment
 						</Link>
+						<Link className='nav-link' to='/register'>
+							Account
+						</Link>
 						<Link className='nav-link' to='/'>
 							Contact
 						</Link>

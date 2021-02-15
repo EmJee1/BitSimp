@@ -42,7 +42,7 @@ const ProductCarousel = ({title}) => {
 				<img src={rightPointingHand} alt='Right pointing hand icon' />
 			</h2>
 			<div className='product-carousel-wrap' ref={carouselWrapRef}>
-				{products.map((obj, index) => (
+				{products.map((obj) => (
 					<div className='product-carousel-item' key={obj.id}>
 						<div className='product-carousel-image'>
 							<img src={obj.image} alt='Product preview' />

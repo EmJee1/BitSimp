@@ -10,6 +10,7 @@ const HomePage = () => {
 				backgroundImage={bannerImage}
 				title='Moeite met thuiswerken?'
 				description='Bij BitSimp helpen we u met het uitzoeken van geschikte appraratuur'
+				showButton={true}
 			/>
 			<USPs />
 			<ProductCarousel title='Bestsellers' />
