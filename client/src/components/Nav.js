@@ -27,9 +27,6 @@ const Nav = ({ userData }) => {
 						<Link className='nav-link' to='/register'>
 							Account
 						</Link>
-						<Link className='nav-link' to='/'>
-							Contact
-						</Link>
 						{userData.rightsLayer === 2 && (
 							<Link className='nav-link' to='/admin'>
 								Admin
