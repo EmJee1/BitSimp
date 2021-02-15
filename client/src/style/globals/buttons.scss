@@ -1,7 +1,7 @@
 .btn {
     background-color: $green;
     color: $white;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     border-radius: 4px;
     transition: all .6s;
 
@@ -9,4 +9,12 @@
         background-color: $white;
         color: $green;
     }
+}
+
+.btn-secondary-hover:hover {
+    border-color: $green;
+}
+
+.pointer {
+    cursor: pointer;
 }

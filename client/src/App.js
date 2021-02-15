@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import AssortmentPage from './pages/AssortmentPage'
 import CartButton from './components/CartButton'
-import RegisterPage from './pages/RegisterPage'
+import AccountPage from './pages/AccountPage'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import Nav from './components/Nav'
@@ -25,7 +25,7 @@ const App = () => {
 					<AssortmentPage />
 				</Route>
 				<Route path='/register' exact>
-					<RegisterPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+					<AccountPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 				</Route>
 			</Switch>
 			<CartButton cart={cart} />

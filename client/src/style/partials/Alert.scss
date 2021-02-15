@@ -1,0 +1,11 @@
+.alert-danger {
+    color: $black;
+    border-color: transparentize($red, .3);
+    background-color: transparentize($red, .85);
+}
+
+.alert-success {
+    color: $black;
+    border-color: $green;
+    background-color: transparentize($green, .7);
+}
