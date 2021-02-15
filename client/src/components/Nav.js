@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Nav = () => {
+const Nav = ({ userData }) => {
 	return (
 		<nav className='navbar navbar-expand-lg main-nav bg-green'>
 			<div className='container'>
@@ -17,7 +17,7 @@ const Nav = () => {
 				</button>
 				<div className='collapse navbar-collapse' id='navMarkup'>
 					<hr className='bg-white' />
-					<div className='navbar-nav font-bold font-lg'>
+					<div className='navbar-nav font-bold font-xmd'>
 						<Link className='nav-link active' to='/'>
 							Home
 						</Link>
@@ -30,6 +30,11 @@ const Nav = () => {
 						<Link className='nav-link' to='/'>
 							Contact
 						</Link>
+						{userData.rightsLayer === 2 && (
+							<Link className='nav-link' to='/admin'>
+								Admin
+							</Link>
+						)}
 					</div>
 				</div>
 			</div>

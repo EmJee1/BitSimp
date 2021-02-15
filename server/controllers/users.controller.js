@@ -18,7 +18,7 @@ export const getUserInfoByToken = async (req, res) => {
 	let userQuery
 	try {
 		userQuery = await UserModel.findOne({ _id: decoded.userid })
-			.select('-password -rightsLayer')
+			.select('-password')
 			.exec()
 	} catch (err) {
 		res.status(500).json({ success: false, message: 'Internal server error' })

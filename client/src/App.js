@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import AssortmentPage from './pages/AssortmentPage'
 import CartButton from './components/CartButton'
 import AccountPage from './pages/AccountPage'
+import AdminPage from './pages/AdminPage'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import Nav from './components/Nav'
@@ -38,7 +39,7 @@ const App = () => {
 
 	return (
 		<>
-			<Nav />
+			<Nav userData={userData} />
 			<Switch>
 				<Route path='/' exact>
 					<HomePage />
@@ -49,9 +50,12 @@ const App = () => {
 				<Route path='/register' exact>
 					<AccountPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 				</Route>
+				<Route path='/admin' exact>
+					<AdminPage userData={userData} />
+				</Route>
 			</Switch>
 			<CartButton cart={cart} />
-			<Footer />
+			<Footer userData={userData} />
 		</>
 	)
 }

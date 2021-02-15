@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Footer = () => {
+const Footer = ({ userData }) => {
 	return (
 		<footer className='main-footer'>
 			<div className='container'>
@@ -19,6 +19,11 @@ const Footer = () => {
 						<Link className='nav-link' to='/'>
 							Contact
 						</Link>
+						{userData.rightsLayer === 2 && (
+							<Link className='nav-link' to='/admin'>
+								Admin
+							</Link>
+						)}
 					</div>
 					<div className='col-6 font-sm'>
 						<address>
