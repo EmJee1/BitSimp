@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import AssortmentPage from './pages/AssortmentPage'
 import CartButton from './components/CartButton'
@@ -13,6 +13,28 @@ import './style/index.scss'
 const App = () => {
 	const [cart, setCart] = useState([])
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
+	const [userData, setUserData] = useState({})
+
+	useEffect(() => {
+		const fetchData = async () => {
+			return await (
+				await fetch('http://localhost:8000/users/getInfoById', {
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+					},
+				})
+			).json()
+		}
+		fetchData()
+			.then(res => {
+				if (!res.success) isLoggedIn(false)
+				else {
+					setUserData(res.user)
+					setIsLoggedIn(true)
+				}
+			})
+			.catch(err => console.error(err))
+	}, [isLoggedIn])
 
 	return (
 		<>

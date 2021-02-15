@@ -4,27 +4,10 @@ import LoginForm from '../components/forms/LoginForm'
 import CTAbanner from '../components/CTAbanner'
 import USPs from '../components/USPs'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const RegisterPage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [loggingIn, setLoggingIn] = useState(true)
-
-	useEffect(() => {
-		const fetchData = async () => {
-			return await (
-				await fetch('http://localhost:8000/users/getInfoById', {
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
-					},
-				})
-			).json()
-		}
-		fetchData()
-			.then(res => {
-				console.log(res)
-			})
-			.catch(err => console.error(err))
-	}, [])
 
 	return (
 		<>
@@ -48,6 +31,9 @@ const RegisterPage = ({ isLoggedIn, setIsLoggedIn }) => {
 							)}
 							{!loggingIn && <RegisterForm setLoggingIn={setLoggingIn} />}
 						</div>
+					)}
+					{isLoggedIn && (
+						<h1>User dashboard</h1>
 					)}
 				</div>
 			</div>
