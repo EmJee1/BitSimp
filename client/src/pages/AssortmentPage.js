@@ -1,8 +1,14 @@
+import sortAmountDown from '../images/sort-amount-down-alt-solid.svg'
+import sortAmountUp from '../images/sort-amount-up-alt-solid.svg'
 import bannerImage from '../images/assortmentPage.png'
 import CTAbanner from '../components/CTAbanner'
 import USPs from '../components/USPs'
 
+import { useState } from 'react'
+
 const AssortmentPage = () => {
+	const [sortLowToHigh, setSortLowToHigh] = useState(false)
+
 	return (
 		<>
 			<CTAbanner
@@ -23,6 +29,13 @@ const AssortmentPage = () => {
 									className='primary-input search-input'
 									placeholder='Zoek naar producten...'
 								/>
+								<button>
+									<img
+										src={sortLowToHigh ? sortAmountUp : sortAmountDown}
+										onClick={() => setSortLowToHigh(!sortLowToHigh)}
+										alt='Sorting icon'
+									/>
+								</button>
 							</div>
 						</div>
 						<div className='col-12 col-md-6'></div>

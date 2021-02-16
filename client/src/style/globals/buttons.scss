@@ -1,20 +1,25 @@
 .btn {
-    background-color: $green;
-    color: $white;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    transition: all .6s;
+	background-color: $green;
+	color: $white;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	transition: all 0.6s;
+	cursor: pointer;
 
-    &:hover {
-        background-color: $white;
-        color: $green;
-    }
+	&:focus {
+		box-shadow: none;
+	}
+
+	&:hover {
+		background-color: $white;
+		color: $green;
+	}
 }
 
 .btn-secondary-hover:hover {
-    border-color: $green;
+	border-color: $green;
 }
 
 .pointer {
-    cursor: pointer;
+	cursor: pointer;
 }

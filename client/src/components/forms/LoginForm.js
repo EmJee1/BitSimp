@@ -23,8 +23,8 @@ const LoginForm = ({ setLoggingIn, setIsLoggedIn }) => {
 			return
 		}
 
-		setSuccessAlert(data.message)
 		localStorage.setItem('jwtoken', data.token)
+		setSuccessAlert('Registratie successvol, u kunt nu inloggen')
 		setIsLoggedIn(true)
 	}
 

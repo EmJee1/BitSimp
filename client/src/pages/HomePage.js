@@ -3,7 +3,7 @@ import ProductCarousel from '../components/ProductCarousel'
 import CTAbanner from '../components/CTAbanner'
 import USPs from '../components/USPs'
 
-const HomePage = () => {
+const HomePage = ({ products }) => {
 	return (
 		<>
 			<CTAbanner
@@ -13,8 +13,8 @@ const HomePage = () => {
 				showButton={true}
 			/>
 			<USPs />
-			<ProductCarousel title='Bestsellers' />
-			<ProductCarousel title='Newcomers' />
+			<ProductCarousel title='Bestsellers' products={products} />
+			<ProductCarousel title='Newcomers' products={products} />
 		</>
 	)
 }

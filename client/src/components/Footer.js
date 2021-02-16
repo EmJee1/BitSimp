@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom'
 
-const Footer = ({ userData }) => {
+const Footer = ({ userData, location }) => {
+	const pathname = location.pathname
+
 	return (
 		<footer className='main-footer'>
 			<div className='container'>
 				<hr />
 				<div className='inner-footer row black'>
 					<div className='col-6 font-bold font-md'>
-						<Link className='nav-link active' to='/'>
+						<Link className={`nav-link ${pathname === '/' ? 'active' : ''}`} to='/'>
 							Home
 						</Link>
 						<Link className='nav-link' to='/assortiment'>
 							Assortiment
 						</Link>
-						<Link className='nav-link' to='/register'>
+						<Link className='nav-link' to='/account'>
 							Account
 						</Link>
 						{userData.rightsLayer === 2 && (

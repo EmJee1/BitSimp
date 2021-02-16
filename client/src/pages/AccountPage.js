@@ -9,6 +9,11 @@ import { useState } from 'react'
 const RegisterPage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [loggingIn, setLoggingIn] = useState(true)
 
+	const handleLogout = () => {
+		setIsLoggedIn(false)
+		localStorage.setItem('jwtoken', '')
+	}
+
 	return (
 		<>
 			<CTAbanner
@@ -33,7 +38,14 @@ const RegisterPage = ({ isLoggedIn, setIsLoggedIn }) => {
 						</div>
 					)}
 					{isLoggedIn && (
-						<h1>User dashboard</h1>
+						<div className='container'>
+							<div className='row'>
+								<div className='col-12'>
+									<h2>User dashboard</h2>
+									<p onClick={handleLogout}>Logout</p>
+								</div>
+							</div>
+						</div>
 					)}
 				</div>
 			</div>

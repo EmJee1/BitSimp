@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 
-const Nav = ({ userData }) => {
+const Nav = ({ userData, props, location }) => {
+	const pathname = location.pathname
+
 	return (
 		<nav className='navbar navbar-expand-lg main-nav bg-green'>
 			<div className='container'>
@@ -18,17 +20,31 @@ const Nav = ({ userData }) => {
 				<div className='collapse navbar-collapse' id='navMarkup'>
 					<hr className='bg-white' />
 					<div className='navbar-nav font-bold font-xmd'>
-						<Link className='nav-link active' to='/'>
+						<Link
+							className={`nav-link ${pathname === '/' ? 'active' : ''}`}
+							to='/'
+						>
 							Home
 						</Link>
-						<Link className='nav-link' to='/assortiment'>
+						<Link
+							className={`nav-link ${
+								pathname === '/assortiment' ? 'active' : ''
+							}`}
+							to='/assortiment'
+						>
 							Assortiment
 						</Link>
-						<Link className='nav-link' to='/register'>
+						<Link
+							className={`nav-link ${pathname === '/account' ? 'active' : ''}`}
+							to='/account'
+						>
 							Account
 						</Link>
 						{userData.rightsLayer === 2 && (
-							<Link className='nav-link' to='/admin'>
+							<Link
+								className={`nav-link ${pathname === '/admin' ? 'active' : ''}`}
+								to='/admin'
+							>
 								Admin
 							</Link>
 						)}

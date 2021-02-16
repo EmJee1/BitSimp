@@ -1,3 +1,4 @@
+import { useLocation, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import CartButton from './components/CartButton'
@@ -12,6 +13,15 @@ const App = () => {
 	const [cart, setCart] = useState([])
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const [userData, setUserData] = useState({})
+	const [products, setProducts] = useState([])
+
+	const location = useLocation()
+
+	useEffect(() => {
+		fetch('https://fakestoreapi.com/products')
+			.then(res => res.json())
+			.then(json => setProducts(json))
+	})
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -25,7 +35,7 @@ const App = () => {
 		}
 		fetchData()
 			.then(res => {
-				if (!res.success) isLoggedIn(false)
+				if (!res.success) setIsLoggedIn(false)
 				else {
 					setUserData(res.user)
 					setIsLoggedIn(true)
@@ -36,14 +46,18 @@ const App = () => {
 
 	return (
 		<>
-			<Nav userData={userData} />
-			<CartButton cart={cart} />
+			<Nav userData={userData} location={location} />
 			<Router
 				isLoggedIn={isLoggedIn}
 				setIsLoggedIn={setIsLoggedIn}
 				userData={userData}
+				products={products}
+				cart={cart}
 			/>
-			<Footer userData={userData} />
+			<Link to='/shoppingCart'>
+				<CartButton cart={cart} />
+			</Link>
+			<Footer userData={userData} location={location} />
 		</>
 	)
 }
