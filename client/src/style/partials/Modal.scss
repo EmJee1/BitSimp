@@ -1,0 +1,44 @@
+.bitsimp-modal-outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparentize($black, .5);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bitsimp-modal-head {
+    padding: 0 0;
+}
+
+.bitsimp-modal-inner {
+    width: 90%;
+    background-color: $white;
+    padding: 2rem;
+}
+
+.bitsimp-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+
+    button {
+        margin-left: .8rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .bitsimp-modal-inner {
+        padding: 2rem .6rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .bitsimp-modal-inner {
+        width: 60%;
+    }
+}

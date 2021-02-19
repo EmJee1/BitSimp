@@ -23,3 +23,13 @@
 .pointer {
 	cursor: pointer;
 }
+
+.btn-red {
+	background-color: $red;
+
+	&:hover {
+		background-color: transparent;
+		color: $red;
+		border-color: $red;
+	}
+}
