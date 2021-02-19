@@ -1,7 +1,6 @@
 import bannerImage from '../images/adminBanner.jpg'
 
 import CTAbanner from '../components/CTAbanner'
-import EditProductModal from '../components/EditProductModal'
 
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
@@ -22,7 +21,6 @@ const AdminPage = ({ isLoggedIn, userData, products }) => {
 				description='Hier heeft u een gemakkelijk overzicht van alle activiteiten en producten op uw webshop'
 				showButton={false}
 			/>
-			<EditProductModal />
 			<div className='container mt-5'>
 				<h2 className='mb-4'>Webshopbeheer</h2>
 				<div className='row'>
