@@ -10,9 +10,9 @@ const { PORT } = process.env
 
 const app = express()
 
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
-app.use(bodyParser.json({ extended: true }))
-app.use(bodyParser.urlencoded({ extended: true }))
 
 import productsRouter from './router/products.router.js'
 import usersRouter from './router/users.router.js'

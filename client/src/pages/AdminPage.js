@@ -8,13 +8,18 @@ import { useState } from 'react'
 
 const AdminPage = ({ isLoggedIn, userData, products }) => {
 	const [amountOfShownProducts, setAmountOfShownProducts] = useState(10)
+	const [showModal, setShowModal] = useState(false)
 	const history = useHistory()
 
 	if (userData.rightsLayer !== 2 || !isLoggedIn) history.push('/')
 
 	return (
 		<>
-			<AdminEditProductModal isNewProduct={true} />
+			<AdminEditProductModal
+				isNewProduct={true}
+				showModal={showModal}
+				setShowModal={setShowModal}
+			/>
 			<CTAbanner
 				backgroundImage={bannerImage}
 				title='Gemakkelijk beheer van uw webshop'
@@ -27,7 +32,12 @@ const AdminPage = ({ isLoggedIn, userData, products }) => {
 					<div className='col-12 col-md-6'>
 						<div className='d-flex justify-content-between'>
 							<h5>Producten</h5>
-							<p className='pointer green underline'>Add a product</p>
+							<p
+								className='pointer green underline'
+								onClick={() => setShowModal(true)}
+							>
+								Add a product
+							</p>
 						</div>
 						<div className='admin-products-overview'>
 							{products.slice(0, amountOfShownProducts).map(obj => (
