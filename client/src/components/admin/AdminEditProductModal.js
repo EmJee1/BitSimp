@@ -8,6 +8,9 @@ const AdminEditProductModal = ({
 	setShowModal,
 }) => {
 	const [product, setProduct] = useState({})
+	const [title, setTitle] = useState('')
+	const [description, setDescription] = useState('')
+	const [images, setImages] = useState([])
 
 	const handleBackdrop = e => {
 		if (e.target.classList.contains('bitsimp-modal-outer')) setShowModal(false)
@@ -56,7 +59,9 @@ const AdminEditProductModal = ({
 										id='product-title'
 										className='primary-input w-100'
 									/>
-									<label htmlFor='product-images' className='mt-2'>Productfoto's</label>
+									<label htmlFor='product-images' className='mt-2'>
+										Productfoto's
+									</label>
 									<input type='file' id='product-images' />
 								</div>
 								<div className='col-12 col-md-6 mt-4'>
