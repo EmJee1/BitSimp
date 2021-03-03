@@ -1,3 +1,6 @@
+// import third party libs
+@import './vendor/bootstrap.min.css';
+
 // global imports
 @import './globals/colors.scss';
 @import './globals/typography.scss';
@@ -15,6 +18,3 @@
 @import './partials/AccountPage.scss';
 @import './partials/Alert.scss';
 @import './partials/Modal.scss';
-
-// import third party libs
-@import './vendor/bootstrap.min.css';

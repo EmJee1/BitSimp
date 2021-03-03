@@ -5,6 +5,7 @@ import express from 'express'
 import {
 	signupController,
 	loginController,
+	googleLoginController,
 } from '../controllers/auth.controller.js'
 
 // import middleware
@@ -30,5 +31,6 @@ router.post(
 	hasValidPasswordInBody,
 	loginController
 )
+router.post('/googlelogin', hasValidPostBody, googleLoginController)
 
 export default router

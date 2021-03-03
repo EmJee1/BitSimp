@@ -1,3 +1,8 @@
+const { GOOGLE_CLIENT_ID } = process.env
+
+import { OAuth2Client } from 'google-auth-library'
+const client = new OAuth2Client(GOOGLE_CLIENT_ID)
+
 import UserModel from '../database/models/user.model.js'
 import jwt from 'jsonwebtoken'
 
@@ -21,7 +26,7 @@ export const signupController = async (req, res) => {
 		return
 	}
 
-	const userDetails = { email, password }
+	const userDetails = { email, password, isGoogleUser: false }
 	const newUser = new UserModel(userDetails)
 
 	try {
@@ -54,6 +59,14 @@ export const loginController = async (req, res) => {
 		return
 	}
 
+	if (userQuery.isGoogleUser) {
+		res.status(401).json({
+			success: false,
+			message: 'Please sign in using Google',
+		})
+		return
+	}
+
 	if (!userQuery.isValidPassword(password)) {
 		res.status(401).json({
 			success: false,
@@ -70,4 +83,55 @@ export const loginController = async (req, res) => {
 	res
 		.status(200)
 		.json({ success: true, message: 'User logged in successfully', token })
+}
+
+export const googleLoginController = async (req, res) => {
+	const { token } = req.body
+
+	const ticket = await client.verifyIdToken({
+		idToken: token,
+		audience: GOOGLE_CLIENT_ID,
+	})
+
+	const { email } = ticket.getPayload()
+
+	if (!email) {
+		res.status(401).json({
+			success: false,
+			message: 'Error with google',
+		})
+	}
+
+	let userQuery
+	try {
+		userQuery = await UserModel.findOne({ email }).exec()
+	} catch (err) {
+		res.status(500).json({ success: false, message: err })
+	}
+
+	if (userQuery) {
+		res.status(409).json({
+			success: false,
+			message: 'A user with that mail already registered',
+		})
+		return
+	}
+
+	const userDetails = { email, isGoogleUser: true }
+	const newUser = new UserModel(userDetails)
+
+	try {
+		await newUser.save()
+		res
+			.status(201)
+			.json({
+				success: true,
+				message: 'User created successfully',
+				data: email,
+			})
+		return
+	} catch (err) {
+		res.status(500).json({ success: false, message: err.message })
+		return
+	}
 }

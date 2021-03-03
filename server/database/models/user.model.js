@@ -18,6 +18,7 @@ const UserSchema = new Schema({
 	password: String,
 	firstname: String,
 	orders: [OrderSchema],
+	isGoogleUser: Boolean,
 	rightsLayer: {
 		type: Number,
 		default: 0,
@@ -30,6 +31,8 @@ const UserSchema = new Schema({
 
 // UserSchema pre for hashing the password
 UserSchema.pre('save', async function (next) {
+	if (!this.password || this.isGoogleUser) next()
+
 	const hash = await bcrypt.hash(this.password, 10)
 
 	this.password = hash

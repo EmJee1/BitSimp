@@ -1,3 +1,4 @@
+import { GoogleLogin } from 'react-google-login'
 import { useState } from 'react'
 import Alert from '../Alert'
 
@@ -6,6 +7,17 @@ const LoginForm = ({ setLoggingIn, setIsLoggedIn }) => {
 	const [password, setPassword] = useState('')
 	const [dangerAlert, setDangerAlert] = useState('')
 	const [successAlert, setSuccessAlert] = useState('')
+
+	const handleGoogleLogin = async googleData => {
+		const res = await fetch('http://localhost:8000/auth/googlelogin', {
+			method: 'POST',
+			body: JSON.stringify({ token: googleData.tokenId }),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+		const data = await res.json()
+	}
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -61,6 +73,13 @@ const LoginForm = ({ setLoggingIn, setIsLoggedIn }) => {
 					</p>
 				</div>
 			</form>
+			<GoogleLogin
+				clientId='920732355407-u0btdb6hqaji5q3gvmrba2m35drnvhvh.apps.googleusercontent.com'
+				buttonText='Log in with Google'
+				onSuccess={handleGoogleLogin}
+				onFailure={handleGoogleLogin}
+				cookiePolicy={'single_host_origin'}
+			/>
 		</div>
 	)
 }
