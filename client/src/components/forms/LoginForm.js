@@ -9,14 +9,20 @@ const LoginForm = ({ setLoggingIn, setIsLoggedIn }) => {
 	const [successAlert, setSuccessAlert] = useState('')
 
 	const handleGoogleLogin = async googleData => {
-		const res = await fetch('http://localhost:8000/auth/googlelogin', {
+		const data = await (await fetch('http://localhost:8000/auth/googlelogin', {
 			method: 'POST',
 			body: JSON.stringify({ token: googleData.tokenId }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
-		})
-		const data = await res.json()
+		})).json()
+		if(!data.success) {
+			setDangerAlert(data.message)
+			return
+		}
+
+		localStorage.setItem('jwtoken', data.token)
+		setIsLoggedIn(true)
 	}
 
 	const handleSubmit = async e => {
@@ -62,7 +68,7 @@ const LoginForm = ({ setLoggingIn, setIsLoggedIn }) => {
 					className='primary-input mb-3 mt-1 w-100'
 					onChange={e => setPassword(e.target.value)}
 				/>
-				<div className='d-flex justify-content-between align-items-end'>
+				<div className='d-flex justify-content-between align-items-center'>
 					<input
 						type='submit'
 						value='Inloggen'
@@ -73,9 +79,10 @@ const LoginForm = ({ setLoggingIn, setIsLoggedIn }) => {
 					</p>
 				</div>
 			</form>
+			<h5 className='login-separator'>or</h5>
 			<GoogleLogin
 				clientId='920732355407-u0btdb6hqaji5q3gvmrba2m35drnvhvh.apps.googleusercontent.com'
-				buttonText='Log in with Google'
+				buttonText='Inloggen met Google'
 				onSuccess={handleGoogleLogin}
 				onFailure={handleGoogleLogin}
 				cookiePolicy={'single_host_origin'}

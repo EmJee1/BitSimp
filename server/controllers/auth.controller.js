@@ -1,12 +1,10 @@
-const { GOOGLE_CLIENT_ID } = process.env
+const { GOOGLE_CLIENT_ID, JSON_WEBTOKEN_SECRET } = process.env
 
 import { OAuth2Client } from 'google-auth-library'
-const client = new OAuth2Client(GOOGLE_CLIENT_ID)
-
 import UserModel from '../database/models/user.model.js'
 import jwt from 'jsonwebtoken'
 
-const { JSON_WEBTOKEN_SECRET } = process.env
+const client = new OAuth2Client(GOOGLE_CLIENT_ID)
 
 export const signupController = async (req, res) => {
 	const { email, password } = req.body
@@ -110,6 +108,16 @@ export const googleLoginController = async (req, res) => {
 	}
 
 	if (userQuery) {
+		if (userQuery.isGoogleUser) {
+			const token = jwt.sign({ userid: userQuery._id }, JSON_WEBTOKEN_SECRET, {
+				expiresIn: '1h',
+			})
+			res
+				.status(200)
+				.json({ success: true, message: 'User logged in successfully', token })
+			return
+		}
+
 		res.status(409).json({
 			success: false,
 			message: 'A user with that mail already registered',
@@ -122,13 +130,14 @@ export const googleLoginController = async (req, res) => {
 
 	try {
 		await newUser.save()
-		res
-			.status(201)
-			.json({
-				success: true,
-				message: 'User created successfully',
-				data: email,
-			})
+		const token = jwt.sign({ userid: newUser._id }, JSON_WEBTOKEN_SECRET, {
+			expiresIn: '1h',
+		})
+		res.status(201).json({
+			success: true,
+			message: 'User created successfully',
+			token,
+		})
 		return
 	} catch (err) {
 		res.status(500).json({ success: false, message: err.message })
