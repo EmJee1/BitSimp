@@ -19,7 +19,7 @@ router.post(
 	'/addProduct',
 	hasValidAdminTokenInHeader,
 	multerUpload.array('product-image', 8),
-	verifyProductController,
+	verifyProductController
 )
 
 export default router

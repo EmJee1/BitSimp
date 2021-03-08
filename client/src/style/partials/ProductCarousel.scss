@@ -22,8 +22,9 @@
 	gap: 2.6rem;
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
-	scroll-padding: 1rem;
+	scroll-padding: 0;
 	overflow-y: hidden;
+	scroll-behavior: smooth;
 }
 
 .product-carousel-item {

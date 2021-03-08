@@ -9,8 +9,8 @@ const ProductCarousel = ({ title, products }) => {
 
 	const handleCarouselButton = scrollRight => {
 		let newLeftLocation = carouselWrapRef.current.scrollLeft
-		if (scrollRight) newLeftLocation += 180
-		else newLeftLocation -= 180
+		if (scrollRight) newLeftLocation += 600
+		else newLeftLocation -= 600
 
 		carouselWrapRef.current.scrollTo({
 			left: newLeftLocation,
