@@ -18,7 +18,7 @@ export const bestSellersController = async (req, res) => {
 
 export const verifyProductController = async (req, res, next) => {
 	const { title, description } = req.body
-	console.log(req.body)
+	console.log(req.files)
 
 	if (!title || title.length < 3) {
 		res
